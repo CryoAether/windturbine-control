@@ -1,6 +1,6 @@
 # Wind Turbine Control & Ground Station Telemetry
 
-Real-time distributed control system and telemetry platform built with C++ (ESP32-S3, FreeRTOS, OpenGL/ImGui), MQTT, and Python to regulate and monitor a wind turbine designed for a turbine competition and eventual deployment on remote Scottish farms.
+Real-time distributed control system and telemetry platform built with C++ (ESP32-S3, FreeRTOS, OpenGL/ImGui), MQTT, and Python to regulate and monitor a wind turbine designed for a national competition and eventual deployment on remote Scottish farms.
 
 <img src="docs/images/image.jpeg" alt="Wind turbine ground station telemetry and control monitor" width="850" />
 
