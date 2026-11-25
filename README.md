@@ -1,12 +1,12 @@
 # Wind Turbine Control & Ground Station Telemetry
 
-Real-time embedded control firmware and ground-station telemetry system built with C++ (ESP32-S3, FreeRTOS, OpenGL/ImGui), MQTT, and Python to regulate and monitor a wind turbine designed for a turbine competition and eventual deployment on remote Scottish farms.
+Real-time distributed control system and telemetry platform built with C++ (ESP32-S3, FreeRTOS, OpenGL/ImGui), MQTT, and Python to regulate and monitor a wind turbine designed for a turbine competition and eventual deployment on remote Scottish farms.
 
 <img src="docs/images/image.jpeg" alt="Wind turbine ground station telemetry and control monitor" width="850" />
 
 ## Why I Built This
 
-I built the control firmware and ground-station software for a wind turbine competing in a turbine competition, with the long-term goal of deploying reliable, low-maintenance power generation on remote Scottish farms. Wind gusts in off-grid environments can rapidly spike generator bus voltage past safe grid-inverter limits, so the system needs deterministic overvoltage protection alongside live remote monitoring and manual override controls.
+I built the control firmware and ground-station software for a wind turbine competing in a collegiate competition, with the long-term goal of deploying reliable, low-maintenance power generation on remote Scottish farms. Wind gusts in off-grid environments can rapidly spike generator bus voltage past safe grid-inverter limits, so the system needs deterministic overvoltage protection alongside live remote monitoring and manual override controls.
 
 On the ESP32-S3, I pinned a 100 Hz FreeRTOS PID voltage regulator (`Kp = 5.0`, `Ki = 1.2`, `Kd = 0.5`) to Core 1 with an exponential moving average filter (`alpha = 0.15`) to drive a 20 kHz dump-load MOSFET (`GPIO 18`) whenever bus voltage exceeds the `58.0 V` setpoint. Sensor acquisition runs without blocking the control loop: a dedicated Core 0 FreeRTOS task polls a PZEM-017 power monitor over RS485 Modbus (`UART2`)—starting with an initial blocking read in `setup()` so the PID initializes with true bus voltage—while an `IRAM_ATTR` GPIO interrupt with a 3 ms debounce measures wind speed from the anemometer and a `DHT11` tracks nacelle temperature and humidity.
 
