@@ -4,7 +4,7 @@ Real-time distributed control system and telemetry platform built with C++ (ESP3
 
 <img src="docs/images/image.jpeg" alt="Wind turbine ground station telemetry and control monitor" width="850" />
 
-## Why I Built This
+## System Overview
 
 I built the control firmware and ground-station software for a wind turbine competing in a collegiate competition, with the long-term goal of deploying reliable, low-maintenance power generation on remote Scottish farms. Wind gusts in off-grid environments can rapidly spike generator bus voltage past safe grid-inverter limits, so the system needs deterministic overvoltage protection alongside live remote monitoring and manual override controls.
 
